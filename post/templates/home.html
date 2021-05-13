@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>멋사 Blog 실습</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% for blog in blogs.all %}
+    <div>
+        <a href="{% url 'update' blog.id %}"><span>수정</span></a>
+        <a href="{% url 'delete' blog.id %}"><span>삭제</span></a>
+        <h2><a href="{% url 'detail' blog.id %}">{{blog.title}}</a></h2>
+    </div>
+    <hr>
+    {% endfor %}
+    <a href="{% url 'create' %}">새로 만들기</a>
+</body>
+</html>
+
